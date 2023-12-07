@@ -1,12 +1,16 @@
 #!/usr/bin/python3
 
 
-def multiply_by_2(a_dictionary):
+def best_score(a_dictionary):
     """
-    A function that returns a new dictionary
-    with all values multiplied by 2
+    A function that returns a key with the biggest integer value.
     """
-    new_dict = {}
-    for key, value in a_dictionary.items():
-        new_dict.update({key: (value * 2)})
-    return new_dict
+    if a_dictionary:
+        my_list = list(a_dictionary.keys())
+        score = 0
+        top_scorer = ""
+        for i in my_list:
+            if a_dictionary[i] > score:
+                score = a_dictionary[i]
+                top_scorer = i
+        return top_scorer
