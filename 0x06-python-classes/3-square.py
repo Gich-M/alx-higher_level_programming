@@ -12,13 +12,10 @@ class Square:
         Args:
             size (int): The size of the new square.
             """
-        try:
-            if not isinstance(size, int):
-                raise TypeError("size must be an integer")
-            if size < 0:
-                raise ValueError("size must be >= 0")
-        except (TypeError, ValueError) as error:
-            print(error)
+        if not isinstance(size, int):
+            raise TypeError("size must be an integer")
+        elif size < 0:
+            raise ValueError("size must be >= 0")
         size.__size = size
 
     def area(self):
