@@ -14,6 +14,11 @@ from requests.auth import HTTPBasicAuth
 
 if __name__ == '__main__':
     auth = HTTPBasicAuth(sys.argv[1], sys.argv[2])
-    res = requests.get("https://api.github.com/repos/{}/commits".format(sys.argv[3]), auth=auth)
+    res = requests.get(
+        "https://api.github.com/repos/{}/commits".format(sys.argv[3]),
+        auth=auth)
     for commit in res.json():
-        print("{:s}: {:s}".format(commit.get("sha"), commit.get("commit").get("author").get("name")))
+        print(
+            "{:s}: {:s}".format(
+                commit.get("sha"),
+                commit.get("commit").get("author").get("name")))
