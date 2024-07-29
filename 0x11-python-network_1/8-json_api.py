@@ -20,7 +20,7 @@ if __name__ == '__main__':
         res = requests.post('http://0.0.0.0:5000/search_user', data={'q': q})
         user = res.json()
         if res.json():
-            print("[{}] {}".format(user.get("id"), user.get("Name")))
+            print("[{}] {}".format(user.get("id"), user.get("name")))
         else:
             print("No result")
     except ValueError:
