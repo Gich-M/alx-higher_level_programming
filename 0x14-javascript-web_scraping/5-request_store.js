@@ -12,7 +12,7 @@ if (!url || !outpath) {
 
 request.get(url, (err, response, body) => {
   if (err) {
-    console.error('Error fetchimg URL ${url}:', err);
+    console.error(`Error fetchimg URL ${url}:`, err);
     process.exit(1);
   }
     if (response.statusCode !== 200) {
