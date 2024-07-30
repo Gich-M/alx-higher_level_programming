@@ -10,18 +10,23 @@ if (!url || !outpath) {
   process.exit(1);
 }
 
-request.get(url, (err, _, body) => {
+request.get(url, (err, response, body) => {
   if (err) {
     console.error('Error:', err);
     process.exit(1);
   } else {
-    fs.writeFile(outpath, body, 'utf-8', (err) => {
-      if (err) {
-        console.error('Error writing to file:', err);
-        process.exit(1);
-      } else {
-        console.log(`${outpath}`);
-      }
-    });
+    if (response.statusCode === 200) {
+      fs.writeFile(outpath, body, 'utf-8', (err) => {
+        if (err) {
+          console.error('Error writing to file:', err);
+          process.exit(1);
+        } else {
+          console.log(`${outpath}`);
+        }
+      });
+    } else {
+      console.error(`Failed to fetch URL. Status code: ${response.statusCode}`);
+      process.exit(1);
+    }
   }
 });
