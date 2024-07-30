@@ -9,7 +9,7 @@ if (!filepath || !content) {
 }
 fs.writeFile(filepath, content, 'utf-8', (err) => {
   if (err) {
-    console.error('Error writing file:', err);
+    console.error('Error:', err);
     process.exit(1);
   }
 });
