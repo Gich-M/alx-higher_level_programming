@@ -12,11 +12,11 @@ if (!url || !outpath) {
 
 request.get(url, (err, response, body) => {
   if (err) {
-    console.error(`Error fetchimg URL ${url}:`, err);
+    console.error('Error fetchimg URL ${url}:', err);
     process.exit(1);
   }
     if (response.statusCode !== 200) {
-        console.error(`Failed to fetch URL. Status code: ${response.statusCode}`);
+        console.error('Failed to fetch URL. Status code: ${response.statusCode}');
         process.exit(1);
     }
       fs.writeFile(outpath, body, 'utf-8', (err) => {
