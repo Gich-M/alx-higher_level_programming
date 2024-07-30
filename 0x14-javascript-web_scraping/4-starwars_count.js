@@ -2,6 +2,7 @@
 
 const request = require('request');
 const url = process.argv[2];
+const characterID = '18';
 
 if (!url) {
   console.error('Usage: ./4-starwars_count.js <url>');
@@ -17,7 +18,7 @@ request.get(url, (err, response, body) => {
     const films = JSON.parse(body);
 
     const filmsWedgeAntilles = films.results.filter(film =>
-      film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${18}/`));
+      film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterID}/`));
     console.log(filmsWedgeAntilles.length);
   }
 });
