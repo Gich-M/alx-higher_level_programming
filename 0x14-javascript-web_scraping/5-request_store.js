@@ -7,9 +7,10 @@ const outpath = process.argv[3];
 
 if (!url || !outpath) {
   console.error('Usage: ./5-request_store.js <url> <outpath>');
+  process.exit(1);
 }
 
-request.get(url, (err, body) => {
+request.get(url, (err, _, body) => {
   if (err) {
     console.error('Error:', err);
     process.exit(1);
