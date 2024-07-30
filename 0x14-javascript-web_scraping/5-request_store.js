@@ -21,7 +21,7 @@ request.get(url, (err, response, body) => {
     }
       fs.writeFile(outpath, body, 'utf-8', (err) => {
         if (err) {
-          console.error(`Error writing to file ${outpath}:`, err);
+          console.error('Error writing to file ${outpath}:', err);
           process.exit(1);
         }
       });
