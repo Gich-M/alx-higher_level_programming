@@ -11,7 +11,7 @@ if (!url) {
 
 request.get(url, (err, response, body) => {
   if (err) {
-    console.error(`Error:`, err);
+    console.error('Error:', err);
     process.exit(1);
   }
   if (response.statusCode === 200) {
