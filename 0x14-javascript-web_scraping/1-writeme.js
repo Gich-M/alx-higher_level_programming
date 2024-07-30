@@ -4,7 +4,7 @@ const fs = require('fs');
 const filepath = process.argv[2];
 const content = process.argv[3];
 
-if (!filepath || !content) {
+if (!filepath || content === undefined) {
   console.error('Usage: ./1-writeme.js <filepath> <content>');
   process.exit(1);
 }
