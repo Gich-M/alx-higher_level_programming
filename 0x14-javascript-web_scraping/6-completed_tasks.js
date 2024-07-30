@@ -31,5 +31,5 @@ request(url, (error, response, body) => {
     }
   });
 
-  console.log(JSON.stringify(completedTasksByUser, null, 2));
+  console.log(completedTasksByUser);
 });
