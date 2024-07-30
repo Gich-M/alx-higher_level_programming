@@ -16,7 +16,7 @@ request.get(url, (err, response, body) => {
     process.exit(1);
   }
   if (response.statusCode !== 200) {
-    console.error('Movie not fetched. Status code: ${response.statusCode}');
+    console.error(`Movie not fetched. Status code: ${response.statusCode}`);
     process.exit(1);
   }
   const data = JSON.parse(body);
