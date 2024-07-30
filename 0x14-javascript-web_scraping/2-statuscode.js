@@ -13,6 +13,6 @@ request.get(url, (err, response) => {
     console.error('Error:', err);
     process.exit(1);
   } else {
-    console.log(`Status code: ${response.statusCode}`);
+    console.log(`code: ${response.statusCode}`);
   }
 });
