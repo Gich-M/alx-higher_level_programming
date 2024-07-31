@@ -9,7 +9,7 @@ if (!url) {
   process.exit(1);
 }
 
-request.get(url, function(err, response, body) {
+request.get(url, (err, response, body) => {
   if (err) {
     console.error('Error:', err);
     process.exit(1);
