@@ -2,14 +2,14 @@
 
 const request = require('request');
 const url = process.argv[2];
-const characterID = 18;
+const characterID = '18';
 
 if (!url) {
   console.error('Usage: ./4-starwars_count.js <url>');
   process.exit(1);
 }
 
-request.get(url, (err, response, body) => {
+request.get(url, function(err, response, body) {
   if (err) {
     console.error('Error:', err);
     process.exit(1);
