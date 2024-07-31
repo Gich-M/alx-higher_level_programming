@@ -2,7 +2,7 @@
 
 const request = require('request');
 const url = process.argv[2];
-const characterID = '18';
+const characterID = 18;
 
 if (!url) {
   console.error('Usage: ./4-starwars_count.js <url>');
