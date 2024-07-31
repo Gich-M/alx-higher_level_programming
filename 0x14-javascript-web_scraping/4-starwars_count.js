@@ -14,11 +14,14 @@ request.get(url, (err, response, body) => {
     console.error('Error:', err);
     process.exit(1);
   }
-  if (response.statusCode !== 200) {
+  if (response.statusCode === 200) {
     const films = JSON.parse(body);
 
     const filmsWedgeAntilles = films.results.filter(film =>
       film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterID}/`));
     console.log(filmsWedgeAntilles.length);
+  } else {
+    console.error(`Failed to fetch data. Status code: ${response.statusCode}`);
+    process.exit(1);
   }
 });
