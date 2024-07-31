@@ -18,7 +18,8 @@ request(url, (err, response, body) => {
     const films = JSON.parse(body);
 
     const filmsWedgeAntilles = films.results.filter(film =>
-      film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterID}/`));
+      film.characters.some(character => character.endsWith(`/people/${characterID}/`))
+    );
     console.log(filmsWedgeAntilles.length);
   } else {
     console.error(`Failed to fetch data. Status code: ${response.statusCode}`);
