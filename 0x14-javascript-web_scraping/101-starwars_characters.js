@@ -10,41 +10,27 @@ if (!movieId) {
 
 const movieUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
 
-function fetchCharacter(url, callback) {
+function fetchCharacter (url, callback) {
   request(url, (error, response, body) => {
-    if (error) {
-      console.error('Error fetching character data:', error);
+    if (error || response.statusCode !== 200) {
       callback(null);
       return;
     }
-
-    if (response.statusCode !== 200) {
-      console.error('Failed to fetch character data. Status code:', response.statusCode);
-      callback(null);
-      return;
-    }
-
     const character = JSON.parse(body);
     callback(character.name);
   });
 }
 
 request(movieUrl, (error, response, body) => {
-  if (error) {
-    console.error('Error fetching movie data:', error);
-    return;
-  }
-
-  if (response.statusCode !== 200) {
-    console.error('Failed to fetch movie data. Status code:', response.statusCode);
+  if (error || response.statusCode !== 200) {
+    console.error('Failed to fetch movie data.');
     return;
   }
 
   const movie = JSON.parse(body);
   const characterUrls = movie.characters;
 
-  // Fetch characters one by one in order
-  function fetchCharactersSequentially(index) {
+  function fetchCharactersSequentially (index) {
     if (index >= characterUrls.length) return;
 
     fetchCharacter(characterUrls[index], (characterName) => {
@@ -54,4 +40,6 @@ request(movieUrl, (error, response, body) => {
       fetchCharactersSequentially(index + 1);
     });
   }
+
+  fetchCharactersSequentially(0);
 });
